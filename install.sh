@@ -91,8 +91,8 @@ run_installer() {
 
 clear || printf "\033c"
 
-local_version=$(<"ReziInstall.sh" grep -m 1 'Version: ' | awk '{print $2}')
-latest_version=$(curl -s "https://api.github.com/repos/SirRezi/Rezi_FiveM_Install/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+local_version=$(<"install.sh" grep -m 1 'Version: ' | awk '{print $2}')
+latest_version=$(curl -s "https://api.github.com/repos/europe-lukas/FiveM_Install/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
 if [ "$local_version" != "$latest_version" ]; then
     check_for_update
 else
