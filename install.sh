@@ -65,7 +65,11 @@ run_installer() {
     echo -e "${YELLOW}Erstelle FiveM-Server-Verzeichnis und lade FiveM-Server herunter...${NC}"
     mkdir -p /home/FiveM/server
     cd /home/FiveM/server
-    wget https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/7257-030778a167242f79e0f59cd8d9c04b970e3b75c2/fx.tar.xz
+    
+    artifact_url=$(curl -s https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/ | grep -oP 'https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/\K[0-9\-a-f]+(?=/)' | tail -1)
+    full_url="https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/$artifact_url/fx.tar.xz"
+    wget "$full_url"
+    
     tar xf fx.tar.xz
     rm fx.tar.xz
 
