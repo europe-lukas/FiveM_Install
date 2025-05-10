@@ -7,8 +7,11 @@ NC='\033[0m'
 
 update_script() {
     echo -e "${YELLOW}Aktualisiere das Skript...${NC}"
-    repo="SirRezi/Rezi_FiveM_Install"
-    script="ReziInstall.sh"
+    # repo="SirRezi/Rezi_FiveM_Install"
+    # script="ReziInstall.sh"
+    # For Dev usage only:
+    repo="europe-lukas/FiveM_Install"
+    script="install.sh"
     curl -sLO "https://raw.githubusercontent.com/$repo/main/$script"
     chmod +x $script
     echo -e "${YELLOW}Update erfolgreich durchgeführt.${NC}"
