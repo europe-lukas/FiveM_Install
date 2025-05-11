@@ -65,14 +65,20 @@ run_installer() {
     apt upgrade -y
     apt-get install -y xz-utils git screen
 
+    
+
     echo -e "${YELLOW}Erstelle FiveM-Server-Verzeichnis und lade FiveM-Server herunter...${NC}"
     mkdir -p /home/FiveM/server
     cd /home/FiveM/server
+
+    echo -e "${YELLOW}Ermittle automatisch die neueste FiveM-Server-Version...${NC}"
+    base_url="https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/"
+    latest_path=$(curl -s "$base_url" | grep -oP '<a class="is-active" href="\K[^"]+')
+    full_url="${base_url}${latest_path}fx.tar.xz"
     
-    artifact_url=$(curl -s https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/ | grep -oP 'https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/\K[0-9\-a-f]+(?=/)' | tail -1)
-    full_url="https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/$artifact_url/fx.tar.xz"
+    echo -e "${YELLOW}Lade FiveM-Server herunter${NC}"
     wget "$full_url"
-    
+
     tar xf fx.tar.xz
     rm fx.tar.xz
 
