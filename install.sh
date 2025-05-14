@@ -26,8 +26,11 @@ check_for_update() {
     echo
 
     echo -e "${YELLOW}Überprüfe auf Updates...${NC}"
-    repo="SirRezi/Rezi_FiveM_Install"
-    script="ReziInstall.sh"
+    # repo="SirRezi/Rezi_FiveM_Install"
+    # script="ReziInstall.sh"
+    # For Dev usage only:
+    repo="europe-lukas/FiveM_Install"
+    script="install.sh"
     local_version=$(<"$script" grep -m 1 'Version: ' | awk '{print $2}')
     latest_version=$(curl -s "https://api.github.com/repos/$repo/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
     if [ "$local_version" != "$latest_version" ]; then
