@@ -19,10 +19,11 @@ update_script() {
 
 check_for_update() {
     clear || printf "\033c"
-    echo -e "${BLUE}=====================================================${NC}"
-    echo -e "${BLUE}============= FiveM mit TxAdmin Installer ===========${NC}"
-    echo -e "${BLUE}=====================================================${NC}"
-    echo -e "${GREEN}Dieses Skript wurde von SirRezi erstellt.${NC}"
+    echo -e "${BLUE}===============================================================${NC}"
+    echo -e "${BLUE}================== FiveM mit TxAdmin Installer ================${NC}"
+    echo -e "${BLUE}===============================================================${NC}"
+    echo -e "${GREEN}Dieses Skript wurde von SirRezi erstellt und von europe-lukas ${NC}"
+    echo -e "${GREEN}modifiziert. ${NC}"
     echo
 
     echo -e "${YELLOW}Überprüfe auf Updates...${NC}"
@@ -53,7 +54,8 @@ run_installer() {
     echo -e "${BLUE}=====================================================${NC}"
     echo -e "${BLUE}============= FiveM mit TxAdmin Installer ===========${NC}"
     echo -e "${BLUE}=====================================================${NC}"
-    echo -e "${GREEN}Dieses Skript wurde von SirRezi erstellt.${NC}"
+    echo -e "${GREEN}Dieses Skript wurde von SirRezi erstellt und von ${NC}"
+    echo -e "${GREEN}europe-lukas modifiziert. ${NC}"
     echo
 
     read -p "Möchtest du die Installation von FiveM mit TxAdmin starten? (ja/nein): " choice
@@ -84,11 +86,6 @@ run_installer() {
 
     tar xf fx.tar.xz
     rm fx.tar.xz
-
-    echo -e "${YELLOW}Erstelle FiveM-Server-Daten-Verzeichnis und konfiguriere...${NC}"
-    mkdir -p /home/FiveM/server-data
-    cd /home/FiveM/server-data
-    git clone https://github.com/citizenfx/cfx-server-data.git /home/FiveM/server-data
 
     echo -e "${BLUE}=====================================================${NC}"
     echo -e "${GREEN}============ Installation ist fertig ================${NC}"
